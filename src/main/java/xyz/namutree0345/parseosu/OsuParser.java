@@ -20,20 +20,21 @@ public class OsuParser {
             readedRaw.append(temp).append("\n");
         }
 
-        System.out.println(Arrays.toString(readedRaw.toString().split("]")[6].replace("[Colours", "").split("\n")));
         String[] a = readedRaw.toString().split("]")[6].replace("[Colours", "").split("\n");
 
         ArrayList<OsuNote> result = new ArrayList<>();
         for (int i = 0; i < a.length; i++) {
             if (i != 0) {
-                result.add(new OsuNote(a[i].split(",")[0],
-                        a[i].split(",")[1],
-                        a[i].split(",")[2],
-                        a[i].split(",")[3],
-                        a[i].split(",")[4],
-                        a[i].split(",")[5],
-                        a[i].split(",")[6],
-                        a[i].split(",")[7]));
+                if(a[i].split(",").length >= 8) {
+                    result.add(new OsuNote(a[i].split(",")[0],
+                            a[i].split(",")[1],
+                            a[i].split(",")[2],
+                            a[i].split(",")[3],
+                            a[i].split(",")[4],
+                            a[i].split(",")[5],
+                            a[i].split(",")[6],
+                            a[i].split(",")[7]));
+                }
             }
         }
 
